@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('home');           //'elektronik', 'fashion', dst
+            $table->string('name');           //'elektronik', 'fashion', dst
             $table->string('slug')->unique(); //'elektronik', 'fashion'
             $table->text('description')->nullable();
             $table->timestamps();
