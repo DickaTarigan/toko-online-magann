@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Seller\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Seller\ProductController;
 use Illuminate\Support\Facades\Route;
 
 //--Route publik '/' diarahkan ke HomeController@index
@@ -27,5 +28,9 @@ Route::middleware('auth')->group(function() {
      // Route Khusus Seller (auth + role seller)
      Route::middleware('role:seller')->prefix('seller') -> name('seller.') -> group(function() {
           Route::get('/dashboard', [DashboardController::class, 'index']) -> name('dashboard');
+
+                  // Resource route: otomatis buat 7 route CRUD sekaligus
+          Route::resource('products', ProductController::class);
+
      });
 });
