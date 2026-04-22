@@ -32,7 +32,7 @@ class ProductController extends Controller
         });
 
         return Inertia::render('Seller/Products/Index', [
-            'products' =>$products
+            'products' => $products
         ]);
     }
 
@@ -47,7 +47,7 @@ class ProductController extends Controller
 
 
     // --STORE: Simpan produk baru --
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
         // Simpan foto ke storage/app/public/products/
         $imagePath = $request->file('image')->store('products', 'public');
@@ -96,7 +96,7 @@ class ProductController extends Controller
             if ($product->image) {
                 Storage::disk('public')->delete($product->image);
             }
-            $data['image'] = $request->file('iamge')->store('products', 'public');
+            $data['image'] = $request->file('image')->store('products', 'public');
         } else {
             // Tidak ada foto baru, pertahankan foto lama
             unset($data['image']);

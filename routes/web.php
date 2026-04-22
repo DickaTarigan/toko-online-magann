@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function() {
      Route::middleware('role:seller')->prefix('seller') -> name('seller.') -> group(function() {
           Route::get('/dashboard', [DashboardController::class, 'index']) -> name('dashboard');
 
-                  // Resource route: otomatis buat 7 route CRUD sekaligus
+          // Resource route: otomatis buat 7 route CRUD sekaligus
           Route::resource('products', ProductController::class);
 
      });
