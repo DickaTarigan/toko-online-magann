@@ -26,8 +26,9 @@ class StoreProductRequest extends FormRequest
         return [
             'name'          => 'required|string|max:255',
             'category_id'   => 'required|exists:categories,id',
-            'price'         => 'nullable|string|max:2000',
-            'stock'         => 'required|numeric|min:100|max:999999999',
+            'description'   => 'nullable|string|max:2000',
+            'price'         => 'required|numeric|min:100|max:999999999',
+            'stock'         => 'required|numeric|min:0|max:9999',
             'status'        => 'required|in:active,inactive',
             // foto wajib saat tambah, maks 2MB, hanya jpg/jpeg/png/webp
             'image'         => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
