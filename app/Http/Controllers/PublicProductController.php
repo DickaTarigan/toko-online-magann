@@ -21,7 +21,7 @@ class PublicProductController extends Controller
         $query = Product::with('category', 'seller')
             ->where('status', 'active'); //hanya menampilkan produk aktif
 
-        //--Filter Pencarian--
+        //--Filter Pencarian-- server-side search
         //LIKE '%kata%' mencari di nama DAN deskripsi
         if ($search) {
             $query->where(function ($q) use ($search) {
@@ -87,7 +87,7 @@ class PublicProductController extends Controller
                 'formatted_price' => $p->formatted_price,
             ]);
 
-        return Inertia::render('Product/Show', [
+        return Inertia::render('Products/Show', [
             'product' => array_merge($product->toArray(), [
                 'image_url' => $product->image_url,
                 'formatted_price' => $product->formatted_price,
