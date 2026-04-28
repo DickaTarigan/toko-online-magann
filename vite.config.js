@@ -4,6 +4,13 @@ import vue from '@vitejs/plugin-vue';
 import tailwindcss from '@tailwindcss/vite'; // <--- Tambahkan ini
 
 export default defineConfig({
+    server: {
+        host: '0.0.0.0', // Agar bisa diakses dari luar
+        hmr: {
+            host: 'localhost', // GANTI dengan IP laptop kamu (hasil ipconfig tadi)
+        },
+    },
+
     plugins: [
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.js'],

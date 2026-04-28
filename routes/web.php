@@ -2,13 +2,19 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Seller\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PublicProductController;
+use App\Http\Controllers\Seller\DashboardController;
 use App\Http\Controllers\Seller\ProductController;
 use Illuminate\Support\Facades\Route;
 
 //--Route publik '/' diarahkan ke HomeController@index
 Route::get('/', [HomeController::class, 'index']) -> name('home');
+
+//--Katalog Produk - tidak butuh login
+Route::get('/products', [PublicProductController::class, 'index']) -> name('products.index');
+Route::get('/products/{slug}', [PublicProductController::class, 'show']) -> name('products.show');
+
 
 //--Route autentikasi (hanya untuk guest/blum login)
 Route::middleware('guest')->group(function() {
